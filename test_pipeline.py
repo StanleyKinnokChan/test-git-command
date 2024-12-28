@@ -11,4 +11,4 @@ def make_df():
 
 @pytest.mark.test
 def test_shape(make_df):  # Utilize the fixture by passing it as an argument
-    assert shape(make_df)==10  # check number of rows, here should be 5, but assertion is 10. So the test fails. 
+    assert shape(make_df)==5  # check number of rows, here should be 5, but assertion is 10. So the test fails. 
