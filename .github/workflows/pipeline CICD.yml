@@ -47,4 +47,4 @@ jobs:
             pip install -r requirements.txt
       - name: run the application
         run: |
-            python main.py
+            python ./pipeline/main.py
