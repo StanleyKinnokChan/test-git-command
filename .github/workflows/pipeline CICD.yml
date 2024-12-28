@@ -3,11 +3,11 @@ name: pipeline and testing
 on: push
 
 jobs:
-    build:
+    build-and-test:
         runs-on: ubuntu-latest 
         strategy:
             matrix:
-              python-version: ["pypy3.10"] # "3.9", "3.10", "3.11", "3.12", "3.13"
+              python-version: ["pypy3.8"] # "3.9", "3.10", "3.11", "3.12", "3.13"
 
         steps:
             - name: checkout repo
@@ -16,6 +16,7 @@ jobs:
               uses: actions/setup-python@v5
               with:
                   python-version: ${{ matrix.python-version }}
+                  cache: 'pip' # cache the pip to speed up the process
             - name: Install dependencies
               run: |
                   python -m pip install --upgrade pip
