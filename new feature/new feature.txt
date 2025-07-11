@@ -1,7 +1,2 @@
 yay
-<<<<<<< HEAD
 yay2
-=======
-yay2
-yay3
->>>>>>> feature_branch
