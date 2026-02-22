@@ -11,18 +11,20 @@ on:
 
 jobs:
   claude-response:
+    # This 'if' prevents the bot from replying to its own messages (avoids infinite loops)
+    if: github.actor != 'claude[bot]' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      id-token: write
-      actions: read # Required for Claude to read CI results on PRs
+      id-token: write      # Required for OIDC
+      contents: read       # REQUIRED to fetch the code
+      pull-requests: write # Required to comment on PRs
+      issues: write        # Required to comment on Issues
+      actions: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          fetch-depth: 1
+          fetch-depth: 0
       - uses: anthropics/claude-code-action@v1
         with:
           # anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
