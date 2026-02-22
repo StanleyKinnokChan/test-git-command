@@ -31,7 +31,10 @@ jobs:
           # Or use OAuth token instead:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           track_progress: true
-          prompt: "Review this PR for security issues"
+          prompt: |
+            1. summarize the change of this pr and any possible issues.
+            2. If you find issues, post them as inline comments.
+            3. Regardless, post a final summary of your findings as a PR comment.
 
           # Optional: pass advanced arguments to Claude CLI
           # claude_args: |
